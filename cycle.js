@@ -19,19 +19,7 @@ function quickSort(arr) {
     }
 }
 
-console.log(quickSort([
-    2,
-    5,
-    1,
-    5,
-    3,
-    6,
-    10,
-    -1,
-    -10,
-    100,
-    43
-]));
+console.log(quickSort([    2,    5,    1,    5,    3,    6,    10,    -1,    -10,    100,    43]));
 
 // 该问题的递归解法思路很简单：首先确定边界条件，如果要兑换的钱数为 0，那么返回 1，即只有一种兑换方法：没法兑换。
 // 这里要注意的是该问题计算所有的兑换方法，无法兑换也算一种方法。 如果零钱种类为 0 或钱数小于 0，没有任何方式进行兑换，返回 0。
@@ -58,5 +46,58 @@ function countCharge(money, coins) {
 
 console.log(countCharge(100, [50, 20, 10]));
 
+console.log('sum----start----');
+function sum(n) {
+    const sumL = (left, acc) =>{
+        if(left===0) {
+            return acc;
+        }
+        return sumL(left-1, acc+left);
+    }
+    return sumL(n, 0);
+}
+console.log(sum(1));
+console.log(sum(2));
+console.log(sum(3));
+console.log(sum(200));
 
+console.log('sum----end----');
 
+console.log('fib----start----');
+// 
+function fib(n) {
+    const fibL = ({left, prev=1, next=1})=>{
+        if(left===0) {
+            return prev;
+        } 
+        return fibL({left: left-1, prev: next, next: prev+next});
+    }
+    return fibL({left: n});
+}
+console.log(fib(1));
+console.log(fib(2));
+console.log(fib(3));
+console.log(fib(4));
+console.log(fib(200));
+console.log('fib----end----');
+
+console.log('.*');
+console.log(/.*/.test(''));
+console.log(/.*/.test('b'));
+console.log(/.*/.test('a'));
+console.log(/.*/.test('abc'));
+console.log('.+');
+console.log(/.+/.test(''));
+console.log(/.+/.test('b'));
+console.log(/.+/.test('a'));
+console.log(/.+/.test('abc'));
+console.log('.*?');
+console.log(/.*?/.test(''));
+console.log(/.*?/.test('b'));
+console.log(/.*?/.test('a'));
+console.log(/.*?/.test('abc'));
+console.log('(.?)*');
+console.log(/(.?)*/.test(''));
+console.log(/(.?)*/.test('b'));
+console.log(/(.?)*/.test('a'));
+console.log(/(.?)*/.test('abc'));
